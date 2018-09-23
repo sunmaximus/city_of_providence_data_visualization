@@ -11,6 +11,14 @@ export const fetchDataSuccess = (data) => ({
   data
 })
 
+export const getRandomColor = () => {
+  function c() {
+    var hex = Math.floor(Math.random()*256).toString(16);
+    return ("0"+String(hex)).substr(-2); // pad with zero
+  }
+  return "#"+c()+c()+c();
+}
+
 export const fetchDataError = (error) => ({ type: FETCH_PROVIDENCE_DATA_ERROR, error });
 
 export const fetchProvidenceData = () => {
@@ -51,5 +59,5 @@ export const providenceReducer = (state=defaultState, action) => {
       }
     default:
       return state;
-}
+  }
 }
