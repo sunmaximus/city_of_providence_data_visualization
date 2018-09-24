@@ -7,7 +7,6 @@ class TotalPropertiesPerZipCode extends Component {
     const { zipCodes, zipCodesCount, zipCodeColor } = this.props;
     if (prevProps.zipCodes.length === 0 && zipCodes.length > 0) {
       const horizontalBar = this.horizontalBar;
-      const { zipCodes, zipCodesCount, zipCodeColor } = this.props;
       new Chart(horizontalBar, {
         type: "horizontalBar",
         data: {

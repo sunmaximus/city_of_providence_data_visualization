@@ -9,7 +9,7 @@ export const dataLoading = (isLoading) => ({ type: DATA_LOADING, isLoading });
 export const fetchDataSuccess = (data) => ({
   type: FETCH_PROVIDENCE_DATA_RECEIVED,
   data
-})
+});
 
 export const getRandomColor = () => {
   function c() {

@@ -8,9 +8,9 @@ class ProvidenceComponent extends Component {
     super(props);
 
     this.state = {
-      locationZip: {},
-      locationZipAssessment: {},
-      ownerState: {}
+      locationZip: {}, // total properties count for each zip code in Providence
+      locationZipAssessment: {}, // total assessment value for each zip code in Providence
+      ownerState: {} // keep track of all the state that have an owner
     }
   }
 
@@ -19,6 +19,7 @@ class ProvidenceComponent extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    // if data is fetched then scrape/filter and sum specific data
     if (prevProps.data.length === 0 && this.props.data.length > 0) {
       this.props.data.forEach(property => {
         const { location_zip, total_assessment, owner_state } = property;
@@ -34,25 +35,18 @@ class ProvidenceComponent extends Component {
             },
             ownerState: {
               ...prevState.ownerState,
-              [owner_state]: { fillKey: 'win' }
+              [owner_state]: { fillKey: 'win' } // Use to color a US State blue on the map
             }
           };
         })
       })
     }
-
-    const { locationZip, locationZipAssessment } = this.state;
-    let zipCodesCount = [], zipCodeColor = [], totalAssessmentByZip = [];
-    let zipCodes = Object.keys(locationZip);
-    zipCodes.forEach(zip => {
-      zipCodesCount = [...zipCodesCount, locationZip[zip]];
-      zipCodeColor = [...zipCodeColor, getRandomColor()];
-      totalAssessmentByZip = [...totalAssessmentByZip, locationZipAssessment[zip]]
-    })
   }
 
   render() {
     const { ownerState, locationZip, locationZipAssessment } = this.state;
+
+    // flatten data and pass to Child component to visualize data
     let zipCodesCount = [], zipCodeColor = [], totalAssessmentByZip = [];
     let zipCodes = Object.keys(locationZip);
     zipCodes.forEach(zip => {
@@ -73,7 +67,7 @@ class ProvidenceComponent extends Component {
           totalAssessmentByZip={totalAssessmentByZip}
           zipCodeColor={zipCodeColor}        
         />
-        {Object.keys(ownerState).length > 0 && <OwnerState ownerState={ownerState}/> }
+        <OwnerState ownerState={ownerState}/>
       </div>
     )
   }

@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 import Chart from 'chart.js';
 
 class TotalAssessmentPerZipCode extends Component {
-
   componentDidUpdate(prevProps) {
     const { zipCodes, totalAssessmentByZip, zipCodeColor } = this.props;
     if (prevProps.zipCodes.length === 0 && zipCodes.length > 0) {
       const bar = this.bar, pie = this.pie;
-      
+
       new Chart(bar, {
         type: "bar",
         data: {
