@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import Datamap from 'datamaps';
 
 class OwnerState extends Component {
@@ -33,6 +35,10 @@ class OwnerState extends Component {
       </div>
     );
   }
+}
+
+OwnerState.propTypes = {
+  ownerState: PropTypes.object.isRequired
 }
 
 export default OwnerState;

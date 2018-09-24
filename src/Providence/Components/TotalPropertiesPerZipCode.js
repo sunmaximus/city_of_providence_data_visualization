@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
+
 import Chart from 'chart.js';
 
 class TotalPropertiesPerZipCode extends Component {
@@ -31,7 +33,12 @@ class TotalPropertiesPerZipCode extends Component {
       </div>
     )    
   }
+}
 
+TotalPropertiesPerZipCode.propTypes = {
+  zipCodes: PropTypes.array.isRequired,
+  zipCodesCount: PropTypes.array.isRequired,
+  zipCodeColor: PropTypes.array.isRequired,
 }
 
 export default TotalPropertiesPerZipCode;

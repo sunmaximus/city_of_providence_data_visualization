@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { getRandomColor } from '../module/providence';
 import OwnerState from './OwnerState';
 import TotalPropertiesPerZipCode from './TotalPropertiesPerZipCode';
@@ -71,6 +73,11 @@ class ProvidenceComponent extends Component {
       </div>
     )
   }
+}
+
+ProvidenceComponent.propTypes = {
+  fetchProvidenceData: PropTypes.func.isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
 export default ProvidenceComponent;
