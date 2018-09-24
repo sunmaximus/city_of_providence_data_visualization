@@ -7,7 +7,7 @@ const mapStateToProps = (state) => ({
   loading: state.providence.loading,
 });
 const mapDispatchToProps = (dispatch) => ({
-    fetchProvidenceData: () => dispatch(fetchProvidenceData()),
+  fetchProvidenceData: () => dispatch(fetchProvidenceData()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProvidenceComponent);
